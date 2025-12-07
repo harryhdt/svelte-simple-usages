@@ -1,1 +1,1 @@
-# Svelte Simple \* Examples
+# Svelte Simple \* [Usage]
