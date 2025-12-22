@@ -24,3 +24,4 @@ vite.config.ts.timestamp-*
 
 bootstrap.md
 svelte-*.tgz
+src/lib/form*
