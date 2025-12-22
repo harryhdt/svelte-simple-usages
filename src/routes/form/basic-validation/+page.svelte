@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import z from 'zod';
-	import { useForm } from 'svelte-simple-form';
+	import { useFormControl } from 'svelte-simple-form';
 	import { standardSchemaValidator } from '@svelte-simple-form/validators/standard-schema';
 
 	let success = $state<null | boolean>(null);
@@ -12,13 +12,13 @@
 		age: z.number().min(10)
 	});
 
-	const { form } = useForm({
+	const { form, control } = useFormControl({
 		initialValues: {
 			name: '',
 			email: '',
-			age: ''
+			age: 0
 		},
-		validator: standardSchemaValidator(schema),
+		validator: standardSchemaValidator(schema) as any,
 		onSubmit: async (values) => {
 			success = null;
 			await new Promise((r) => setTimeout(r, 2000));
@@ -65,7 +65,7 @@
 					class="form-control {form.errors.name && 'is-invalid'}"
 					id="name"
 					placeholder="Name"
-					bind:value={form.data.name}
+					use:control={'name'}
 				/>
 				{#if form.errors.name}
 					<div class="invalid-feedback">{form.errors.name?.join(', ')}</div>
@@ -78,7 +78,7 @@
 					class="form-control {form.errors.email && 'is-invalid'}"
 					id="email"
 					placeholder="Email"
-					bind:value={form.data.email}
+					use:control={'email'}
 				/>
 				{#if form.errors.email}
 					<div class="invalid-feedback">{form.errors.email?.join(', ')}</div>
@@ -91,7 +91,11 @@
 					class="form-control {form.errors.age && 'is-invalid'}"
 					id="age"
 					placeholder="Age"
-					bind:value={form.data.age}
+					use:control={{
+						field: 'age',
+						valueAsNumber: true
+						// setValueAs: (v) => form.setData('age', Number(v))
+					}}
 				/>
 				{#if form.errors.age}
 					<div class="invalid-feedback">{form.errors.age?.join(', ')}</div>
@@ -108,7 +112,7 @@
 			</button>
 			<button type="button" class="btn btn-danger" onclick={() => form.reset()}> Reset </button>
 
-			<div class="mt-1 d-flex flex-wrap gap-1">
+			<!-- <div class="mt-1 d-flex flex-wrap gap-1">
 				<button class="btn btn-warning" type="button" onclick={() => form.removeError('name')}>
 					Remove error name
 				</button>
@@ -159,7 +163,7 @@
 				<button class="btn btn-warning" type="button" onclick={() => form.submit()}>
 					Trigger submit
 				</button>
-			</div>
+			</div> -->
 		</form>
 		<div class="col bg-light py-2" style="white-space: pre; font-size: 14px;">
 			<code>

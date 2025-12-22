@@ -27,13 +27,16 @@
 			<a href="/form/nested-validation">Nested Validation</a>
 		</li>
 		<li>
+			<a href="/form/file-upload-validation">File Upload Validation</a>
+		</li>
+		<li>
 			<a href="/form/array-validation">Array Validation</a>
 		</li>
 		<li>
-			<a href="/form/nested-array-validation">Nested Array Validation</a>
+			<a href="/form/password-validation">Password Validation</a>
 		</li>
 		<li>
-			<a href="/form/password-validation">Password Validation</a>
+			<a href="/form/all-input-validation">All input Validation</a>
 		</li>
 	</ol>
 </div>

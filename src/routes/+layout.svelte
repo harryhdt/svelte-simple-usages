@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { GlobeIcon, NotepadTextIcon } from '@lucide/svelte';
+	import { GithubIcon, GlobeIcon, NotepadTextIcon } from '@lucide/svelte';
 	import '../app.css';
 	let { children } = $props();
 </script>
@@ -67,10 +67,26 @@
 				</ul>
 				<div class="d-flex align-items-lg-center column-gap-4">
 					<div class="d-flex column-gap-1 align-items-center">
-						<NotepadTextIcon size={18} />
+						<GithubIcon size={18} />
 						<div class="">
-							<a href="https://svelte-simple.harryhdt.dev" target="_blank" class="fw-medium">
-								Svelte Simple Docs
+							<a
+								href="https://github.com/harryhdt/svelte-simple-usages"
+								target="_blank"
+								class="fw-medium"
+							>
+								Github (Codes)
+							</a>
+						</div>
+					</div>
+					<div class="d-flex column-gap-1 align-items-center">
+						<GithubIcon size={18} />
+						<div class="">
+							<a
+								href="https://github.com/harryhdt/svelte-simple-form"
+								target="_blank"
+								class="fw-medium"
+							>
+								Documentation
 							</a>
 						</div>
 					</div>
