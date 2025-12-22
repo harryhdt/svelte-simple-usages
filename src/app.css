@@ -2,6 +2,10 @@
 
 .font-tiktok {
 	font-family: 'TikTok Sans';
+	font-optical-sizing: auto;
+	font-variation-settings:
+		'slnt' 0,
+		'wdth' 100;
 }
 
 .text-blue {
