@@ -3,6 +3,8 @@
 	import z from 'zod';
 	import { useFormControl } from 'svelte-simple-form';
 	import { standardSchemaValidator } from '@svelte-simple-form/validators/standard-schema';
+	// import { useFormControl } from '$lib/form/form.svelte';
+	// import { standardSchemaValidator } from '$lib/form/validators/standard-schema';
 
 	let success = $state<null | boolean>(null);
 
@@ -18,7 +20,7 @@
 			email: '',
 			age: 0
 		},
-		validator: standardSchemaValidator(schema) as any,
+		validator: standardSchemaValidator(schema),
 		onSubmit: async (values) => {
 			success = null;
 			await new Promise((r) => setTimeout(r, 2000));

@@ -18,11 +18,11 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@svelte-simple-form/validators':
-        specifier: ^0.0.2
-        version: 0.0.2(svelte-simple-form@0.4.0(svelte@5.45.6))
+        specifier: ^0.0.3
+        version: 0.0.3(svelte-simple-form@0.4.4(svelte@5.45.6))
       svelte-simple-form:
-        specifier: ^0.4.0
-        version: 0.4.0(svelte@5.45.6)
+        specifier: ^0.4.4
+        version: 0.4.4(svelte@5.45.6)
       svelte-simple-lang:
         specifier: ^0.0.3
         version: 0.0.3(svelte@5.45.6)
@@ -452,10 +452,10 @@ packages:
   '@standard-schema/utils@0.3.0':
     resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
-  '@svelte-simple-form/validators@0.0.2':
-    resolution: {integrity: sha512-q7pQT7ZT8m7fbjPqweB1HXK77LTm5O9FAm3yp074OLTF+if/NFQSgHrFn3AD3jh5fC5Eev3U5eZzMwvtWRGVqw==}
+  '@svelte-simple-form/validators@0.0.3':
+    resolution: {integrity: sha512-GPhY8WOQIc8QRpaoHVR0p+pTfTefSgFUHAkw66B4CEVJ6dAAiSLLPqqat+6RvLwtu+WkFGK6T7CnwLYS0yD6Tw==}
     peerDependencies:
-      svelte-simple-form: ^0.4.0
+      svelte-simple-form: ^0.4.4
 
   '@sveltejs/acorn-typescript@1.0.8':
     resolution: {integrity: sha512-esgN+54+q0NjB0Y/4BomT9samII7jGwNy/2a3wNZbT2A2RpmXsXwUt24LvLhx6jUq2gVk4cWEvcRO6MFQbOfNA==}
@@ -1044,8 +1044,8 @@ packages:
       svelte:
         optional: true
 
-  svelte-simple-form@0.4.0:
-    resolution: {integrity: sha512-w0LAWT2sS9APilSKhmLqBvkh0GhiXrg4RRMvD85Df3ALWY2caDZ8i9S+IhzOPZpbWkOyzeKmZCzhXbw9UYDQgw==}
+  svelte-simple-form@0.4.4:
+    resolution: {integrity: sha512-KD5xggBePJHtJDP36SLbUNB7zOwHTxhFSmnPL74wEBpgRmu8WFDV3yifzStZHNv7T+w432Pcm0haWXsFOfi7mQ==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -1419,11 +1419,11 @@ snapshots:
 
   '@standard-schema/utils@0.3.0': {}
 
-  '@svelte-simple-form/validators@0.0.2(svelte-simple-form@0.4.0(svelte@5.45.6))':
+  '@svelte-simple-form/validators@0.0.3(svelte-simple-form@0.4.4(svelte@5.45.6))':
     dependencies:
       '@standard-schema/spec': 1.0.0
       '@standard-schema/utils': 0.3.0
-      svelte-simple-form: 0.4.0(svelte@5.45.6)
+      svelte-simple-form: 0.4.4(svelte@5.45.6)
 
   '@sveltejs/acorn-typescript@1.0.8(acorn@8.15.0)':
     dependencies:
@@ -2047,7 +2047,7 @@ snapshots:
     optionalDependencies:
       svelte: 5.45.6
 
-  svelte-simple-form@0.4.0(svelte@5.45.6):
+  svelte-simple-form@0.4.4(svelte@5.45.6):
     dependencies:
       svelte: 5.45.6
 
