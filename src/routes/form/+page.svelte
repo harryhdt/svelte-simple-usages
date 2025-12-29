@@ -38,5 +38,8 @@
 		<li>
 			<a href="/form/all-input-validation">All input Validation</a>
 		</li>
+		<li>
+			<a href="/form/component-validation">Component Validation</a>
+		</li>
 	</ol>
 </div>
