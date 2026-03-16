@@ -24,6 +24,9 @@
 			<a href="/form/basic-validation">Basic Validation</a>
 		</li>
 		<li>
+			<a href="/form/basic-default-values-with-validation">Basic Default Values with Validation</a>
+		</li>
+		<li>
 			<a href="/form/nested-validation">Nested Validation</a>
 		</li>
 		<li>
