@@ -38,7 +38,7 @@
 		"@standard-schema/spec": "^1.1.0",
 		"@standard-schema/utils": "^0.3.0",
 		"@svelte-simple-form/validators": "^0.0.6",
-		"svelte-simple-form": "^0.4.10",
+		"svelte-simple-form": "^0.4.11",
 		"svelte-simple-lang": "^0.0.4",
 		"svelte-simple-query": "^0.0.6",
 		"valibot": "^1.4.1",
