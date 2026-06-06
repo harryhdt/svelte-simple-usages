@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import z from 'zod';
-	import { useFormControl } from '$lib/form/form.svelte';
+	// import { useFormControl } from '$lib/form/form.svelte';
+	import { useFormControl } from 'svelte-simple-form';
 	import { standardSchemaValidator } from '@svelte-simple-form/validators/standard-schema';
 
 	const TAKEN_USERNAMES = ['admin', 'root', 'superuser', 'test', 'demo', 'user'];
