@@ -38,7 +38,7 @@
 				}
 			}
 		},
-		validator: standardSchemaValidator(schema) as any,
+		validator: standardSchemaValidator(schema),
 		onSubmit: async (values) => {
 			success = null;
 			await new Promise((r) => setTimeout(r, 2000));

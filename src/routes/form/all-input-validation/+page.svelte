@@ -30,7 +30,7 @@
 			bio: 'Hello\nWorld',
 			file: null // file cannot have default value inside input type=file
 		},
-		validator: standardSchemaValidator(schema) as any,
+		validator: standardSchemaValidator(schema),
 		onSubmit: async (values) => {
 			success = null;
 			await new Promise((r) => setTimeout(r, 2000));
@@ -147,7 +147,7 @@
 
 			<!-- Select -->
 			<div class="mb-3">
-				<label for="country" class="form-label">Countries</label>
+				<label for="countries" class="form-label">Countries</label>
 				<select
 					multiple
 					id="countries"
@@ -161,8 +161,8 @@
 					<option value="Brazil">Brazil</option>
 					<option value="Argentina">Argentina</option>
 				</select>
-				{#if form.errors.country}<div class="invalid-feedback">
-						{form.errors.country?.join(', ')}
+				{#if form.errors.countries}<div class="invalid-feedback">
+						{form.errors.countries?.join(', ')}
 					</div>{/if}
 			</div>
 
