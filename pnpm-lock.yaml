@@ -27,8 +27,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4(svelte@5.56.2(@typescript-eslint/types@8.57.1))
       svelte-simple-query:
-        specifier: ^0.0.6
-        version: 0.0.6(svelte@5.56.2(@typescript-eslint/types@8.57.1))
+        specifier: ^0.0.7
+        version: 0.0.7(svelte@5.56.2(@typescript-eslint/types@8.57.1))
       valibot:
         specifier: ^1.4.1
         version: 1.4.1(typescript@5.9.3)
@@ -1102,8 +1102,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-simple-query@0.0.6:
-    resolution: {integrity: sha512-iwMWQbtHc1l/ZAwpKsh9ddTNWv+xrNujbTo3cHAYpy/lwR9Mt6AntMMPWvub6Ltd+7EXZIJPfHVq63o40cUYdw==}
+  svelte-simple-query@0.0.7:
+    resolution: {integrity: sha512-FKx3tipSqljx0T6EBIiwmrTK7w6KldcGYQxbn4tx81RJgS4HKNfSzl2zxeHedFEKV+EDnhcA16tHzk/JKyr81A==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2131,7 +2131,7 @@ snapshots:
     dependencies:
       svelte: 5.56.2(@typescript-eslint/types@8.57.1)
 
-  svelte-simple-query@0.0.6(svelte@5.56.2(@typescript-eslint/types@8.57.1)):
+  svelte-simple-query@0.0.7(svelte@5.56.2(@typescript-eslint/types@8.57.1)):
     dependencies:
       svelte: 5.56.2(@typescript-eslint/types@8.57.1)
 
