@@ -1,0 +1,13 @@
+{
+	"hello": "مرحبا",
+	"goodbye": "وداعا",
+	"hello_{name}": "مرحبا {name}",
+	"item_{count}": "{count} عنصر",
+	"item_{count}_zero": "لا توجد عناصر",
+	"item_{count}_plural": "{count} عناصر",
+	"nav": {
+		"home": "الرئيسية",
+		"about": "حول",
+		"contact": "اتصال"
+	}
+}

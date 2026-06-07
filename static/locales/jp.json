@@ -1,0 +1,13 @@
+{
+	"hello": "こんにちは",
+	"goodbye": "さようなら",
+	"hello_{name}": "こんにちは {name}",
+	"item_{count}": "{count} アイテム",
+	"item_{count}_zero": "アイテムがありません",
+	"item_{count}_plural": "{count} アイテム",
+	"nav": {
+		"home": "ホーム",
+		"about": "について",
+		"contact": "お問い合わせ"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"hello": "Bonjour",
+	"goodbye": "Au revoir",
+	"hello_{name}": "Bonjour {name}",
+	"item_{count}": "{count} article",
+	"item_{count}_zero": "Aucun article",
+	"item_{count}_plural": "{count} articles",
+	"nav": {
+		"home": "Accueil",
+		"about": "À propos",
+		"contact": "Contact"
+	}
+}
