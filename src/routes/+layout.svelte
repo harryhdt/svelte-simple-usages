@@ -28,9 +28,9 @@
 					<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="/">Home</a>
 					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li> -->
+					<li class="nav-item">
+						<a class="nav-link" href="/docs">Docs</a>
+					</li>
 					<li class="nav-item dropdown">
 						<button
 							class="nav-link dropdown-toggle"
@@ -65,31 +65,15 @@
 						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 					</li> -->
 				</ul>
-				<div class="d-flex align-items-lg-center column-gap-4">
-					<div class="d-flex column-gap-1 align-items-center">
+				<div class="d-flex align-items-lg-center">
+					<a
+						href="https://github.com/harryhdt/svelte-simple-usages"
+						target="_blank"
+						class="fw-medium d-flex align-items-center column-gap-1 text-decoration-none"
+					>
 						<GithubIcon size={18} />
-						<div class="">
-							<a
-								href="https://github.com/harryhdt/svelte-simple-usages"
-								target="_blank"
-								class="fw-medium"
-							>
-								Github (Codes)
-							</a>
-						</div>
-					</div>
-					<div class="d-flex column-gap-1 align-items-center">
-						<GithubIcon size={18} />
-						<div class="">
-							<a
-								href="https://github.com/harryhdt/svelte-simple-form"
-								target="_blank"
-								class="fw-medium"
-							>
-								Documentation
-							</a>
-						</div>
-					</div>
+						<span>GitHub</span>
+					</a>
 				</div>
 			</div>
 		</div>
