@@ -24,8 +24,8 @@ importers:
         specifier: ^0.4.11
         version: 0.4.11(svelte@5.56.2(@typescript-eslint/types@8.57.1))
       svelte-simple-lang:
-        specifier: ^0.0.4
-        version: 0.0.4(svelte@5.56.2(@typescript-eslint/types@8.57.1))
+        specifier: ^0.0.5
+        version: 0.0.5(svelte@5.56.2(@typescript-eslint/types@8.57.1))
       svelte-simple-query:
         specifier: ^0.0.7
         version: 0.0.7(svelte@5.56.2(@typescript-eslint/types@8.57.1))
@@ -1097,8 +1097,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-simple-lang@0.0.4:
-    resolution: {integrity: sha512-m/kBw+Ah0vlVEclT4gnYhOMIx/KZZspML5zuDm5CDb06auwd7KtyF5Z+XtrawmGxgjpc04EOGsheSugpCCkXiw==}
+  svelte-simple-lang@0.0.5:
+    resolution: {integrity: sha512-gzzNTa1qfg3L9fZ7kxMkRxKuLFLFFdVHS+G2tOyfybe4uDgQw8FtEEs92YsX/4c7YM2/NgxjYrGidjeu/49ipg==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2127,7 +2127,7 @@ snapshots:
     dependencies:
       svelte: 5.56.2(@typescript-eslint/types@8.57.1)
 
-  svelte-simple-lang@0.0.4(svelte@5.56.2(@typescript-eslint/types@8.57.1)):
+  svelte-simple-lang@0.0.5(svelte@5.56.2(@typescript-eslint/types@8.57.1)):
     dependencies:
       svelte: 5.56.2(@typescript-eslint/types@8.57.1)
 
