@@ -92,6 +92,6 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 &lt;/form&gt;</code></pre>
 
 	<div class="callout">
-		<strong>Note:</strong> Validators implement the <code>Validator</code> interface. See the <a href="/docs/form/usage#validators">Usage Guide</a> for how to create them.
+		<strong>Note:</strong> Validators implement the <code>Validator</code> interface. See the <a href="/docs/form/usage#validators">Usage Guide</a> for setup instructions using the official <code>@svelte-simple-form/validators</code> package.
 	</div>
 </div>

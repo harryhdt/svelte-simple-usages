@@ -113,7 +113,7 @@ form.arrayUpdateBy('users', (u) =&gt; u.id === 5, &lbrace; name: 'Updated' &rbra
 	<h2>Async Validation</h2>
 	<p>Use async checks within your schema. The library debounces change-triggered validation to prevent API hammering.</p>
 	<pre><code>import * as v from 'valibot';
-import &lbrace; standardSchemaValidator &rbrace; from '$lib/validators/standard-schema';
+import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
 
 const schema = v.object(&lbrace;
   username: v.pipe(
@@ -130,7 +130,7 @@ const schema = v.object(&lbrace;
 
 	<h2>File Upload</h2>
 	<pre><code>import &lbrace; z &rbrace; from 'zod';
-import &lbrace; zodValidator &rbrace; from '$lib/validators/zod';
+import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
 
 const schema = z.object(&lbrace;
   photo: z.instanceof(File).refine((f) =&gt; f.size &lt; 5_000_000, 'Max 5MB')
@@ -138,7 +138,7 @@ const schema = z.object(&lbrace;
 
 const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
   initialValues: &lbrace; photo: null &rbrace;,
-  validator: zodValidator(schema)
+  validator: standardSchemaValidator(schema)
 &rbrace;);</code></pre>
 
 	<pre><code>&lt;input type="file" use:control=&lbrace;'photo'&rbrace; accept="image/*" /&gt;</code></pre>

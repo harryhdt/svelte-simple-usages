@@ -149,7 +149,7 @@
 
   validateForm(form: FormControlContext&lt;T&gt;): boolean | Promise&lt;boolean&gt;;
 &rbrace;</code></pre>
-	<p>See <a href="/docs/form/usage#validators">Usage Guide</a> for reference implementations (Standard Schema and Zod).</p>
+	<p>For ready-to-use validators, install <code>@svelte-simple-form/validators</code> — see <a href="/docs/form/usage#validators">Usage Guide</a>.</p>
 
 	<h2>Types</h2>
 	<pre><code>type FlatPaths&lt;T&gt;     // Union of all dot-notation field paths
