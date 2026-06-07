@@ -2,7 +2,31 @@
 	<h1 class="fw-bold mb-2">API Reference</h1>
 	<p class="lead text-muted mb-4">Complete API reference for svelte-simple-form.</p>
 
-	<h2>useForm</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li>
+				<a href="#useform">useForm</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#formprops">FormProps&lt;T&gt;</a></li>
+					<li><a href="#form-members">Form Members</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#useformcontrol">useFormControl</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#formcontrolprops">FormControlProps&lt;T&gt;</a></li>
+					<li><a href="#formcontrolcontext">FormControlContext&lt;T&gt;</a></li>
+					<li><a href="#fieldoptions">FieldOptions</a></li>
+					<li><a href="#control-action">Control Action</a></li>
+				</ul>
+			</li>
+			<li><a href="#validator-interface">Validator Interface</a></li>
+			<li><a href="#types">Types</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="useform">useForm</h2>
 	<p>Minimal form state and submission handling.</p>
 	<pre><code>function useForm&lt;T extends Record&lt;string, any&gt;&gt;(
   props: FormProps&lt;T&gt;
@@ -17,7 +41,7 @@
   &rbrace;
 &rbrace;</code></pre>
 
-	<h3>FormProps&lt;T&gt;</h3>
+	<h3 id="formprops">FormProps&lt;T&gt;</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Prop</th><th>Type</th><th>Required</th></tr>
@@ -29,7 +53,7 @@
 		</tbody>
 	</table>
 
-	<h3>Form Members</h3>
+	<h3 id="form-members">Form Members</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Member</th><th>Type</th><th>Description</th></tr>
@@ -44,7 +68,7 @@
 		</tbody>
 	</table>
 
-	<h2>useFormControl</h2>
+	<h2 id="useformcontrol">useFormControl</h2>
 	<p>Full form control with validation and state tracking.</p>
 	<pre><code>function useFormControl&lt;T extends Record&lt;string, any&gt;&gt;(
   props: FormControlProps&lt;T&gt;
@@ -54,7 +78,7 @@
 &rbrace;</code></pre>
 
 
-	<h3>FormControlProps&lt;T&gt; (extends FormProps)</h3>
+	<h3 id="formcontrolprops">FormControlProps&lt;T&gt; (extends FormProps)</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
@@ -67,7 +91,7 @@
 		</tbody>
 	</table>
 
-	<h3>FormControlContext&lt;T&gt; (extends FormContext)</h3>
+	<h3 id="formcontrolcontext">FormControlContext&lt;T&gt; (extends FormContext)</h3>
 
 	<table class="table">
 		<thead>
@@ -110,14 +134,14 @@
 		</tbody>
 	</table>
 
-	<h3>FieldOptions</h3>
+	<h3 id="fieldoptions">FieldOptions</h3>
 	<pre><code>type FieldOptions = &lbrace;
   shouldTouch?: boolean;    // default: true
   shouldDirty?: boolean;    // default: true
   shouldValidate?: boolean; // default: true
 &rbrace;;</code></pre>
 
-	<h3>Control Action</h3>
+	<h3 id="control-action">Control Action</h3>
 	<p>Returned as the second element from <code>useFormControl</code>. Use via <code>use:control</code> directive.</p>
 	<pre><code>const &lbrace; form, control &rbrace; = useFormControl(...);
 // control is used via: &lt;input use:control=&lbrace;'fieldName'&rbrace; /&gt;</code></pre>
@@ -134,7 +158,7 @@
 	</table>
 	<p>The action sets up <code>input</code>/<code>change</code> event listeners (select + checkbox/radio/file use <code>change</code>; text inputs use <code>input</code>) and a <code>blur</code> listener. It also uses a <code>$effect</code> to write form state changes back to the DOM.</p>
 
-	<h2>Validator Interface</h2>
+	<h2 id="validator-interface">Validator Interface</h2>
 	<pre><code>interface Validator&lt;T = any&gt; &lbrace;
   validateField(
     field: FlatPaths&lt;T&gt;,
@@ -151,7 +175,7 @@
 &rbrace;</code></pre>
 	<p>For ready-to-use validators, install <code>@svelte-simple-form/validators</code> — see <a href="/docs/form/usage#validators">Usage Guide</a>.</p>
 
-	<h2>Types</h2>
+	<h2 id="types">Types</h2>
 	<pre><code>type FlatPaths&lt;T&gt;     // Union of all dot-notation field paths
 type ArrayPaths&lt;T&gt;   // Only array field paths
 type FormContext&lt;T&gt;        // Base context (extended by FormControlContext)

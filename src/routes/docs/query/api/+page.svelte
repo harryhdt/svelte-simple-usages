@@ -2,10 +2,34 @@
 	<h1 class="fw-bold mb-2">API Reference</h1>
 	<p class="lead text-muted mb-4">Complete API reference for svelte-simple-query.</p>
 
-	<h2>Query (Global Object)</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li>
+				<a href="#query-global-object">Query (Global Object)</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#querysetup">Query.setup(options)</a></li>
+					<li><a href="#query-methods">Query Methods</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#usequery">useQuery&lt;T&gt;</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#query-options">Options</a></li>
+					<li><a href="#statequery-interface">StateQuery Interface</a></li>
+				</ul>
+			</li>
+			<li><a href="#usesinglequery">useSingleQuery / useDynamicQueries</a></li>
+			<li><a href="#mutate">mutate(endpoint, opts?)</a></li>
+			<li><a href="#api-types">Types</a></li>
+			<li><a href="#behavior-notes">Behavior Notes</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="query-global-object">Query (Global Object)</h2>
 	<p>Singleton that manages global configuration, cache, and group operations.</p>
 
-	<h3>Query.setup(options)</h3>
+	<h3 id="querysetup">Query.setup(options)</h3>
 	<p>Initialize global query configuration. Call once at app startup.</p>
 	<table class="table">
 		<thead>
@@ -27,7 +51,7 @@
 		</tbody>
 	</table>
 
-	<h3>Query Methods</h3>
+	<h3 id="query-methods">Query Methods</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Method</th><th>Signature</th><th>Description</th></tr>
@@ -40,7 +64,7 @@
 		</tbody>
 	</table>
 
-	<h2>useQuery&lt;T&gt;(endpoint, opts?)</h2>
+	<h2 id="usequery">useQuery&lt;T&gt;(endpoint, opts?)</h2>
 	<p>Create a query instance for a single endpoint.</p>
 	<pre><code>const users = useQuery&lt;User[]&gt;('/users', &lbrace;
   cacheTimeout: 5000,
@@ -49,7 +73,7 @@
 
 users.fetch();</code></pre>
 
-	<h3>Options</h3>
+	<h3 id="query-options">Options</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Option</th><th>Type</th><th>Description</th></tr>
@@ -62,7 +86,7 @@ users.fetch();</code></pre>
 		</tbody>
 	</table>
 
-	<h3>StateQuery&lt;T, TError&gt; Interface</h3>
+	<h3 id="statequery-interface">StateQuery&lt;T, TError&gt; Interface</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Member</th><th>Type</th><th>Description</th></tr>
@@ -81,7 +105,7 @@ users.fetch();</code></pre>
 		</tbody>
 	</table>
 
-	<h2>useSingleQuery / useDynamicQueries</h2>
+	<h2 id="usesinglequery">useSingleQuery / useDynamicQueries</h2>
 	<p>Create parameterized queries via a key → endpoint mapping function. Returns a proxy object with per-key queries.</p>
 	<pre><code>const posts = useSingleQuery&lt;Post&gt;((id: string) =&gt; `/posts/$&lbrace;id&rbrace;`);
 
@@ -93,7 +117,7 @@ await posts['2'].fetch();
 console.log(posts['1'].data);
 console.log(posts['2'].data);</code></pre>
 
-	<h2>mutate(endpoint, opts?)</h2>
+	<h2 id="mutate">mutate(endpoint, opts?)</h2>
 	<p>Update cache for an endpoint directly — useful after POST/PUT/DELETE.</p>
 	<table class="table">
 		<thead>
@@ -117,7 +141,7 @@ await mutate('/users/1', &lbrace;
 // Refetch
 await mutate('/users/1', &lbrace; refetch: true &rbrace;);</code></pre>
 
-	<h2>Types</h2>
+	<h2 id="api-types">Types</h2>
 	<pre><code>type StateQuery&lt;T, TError = any&gt; = &lbrace;
   data: T | null;
   isError: boolean | string | TError;
@@ -144,7 +168,7 @@ type QueryOptions = &lbrace;
   // ... (same as Query.setup options except setup/bagHit/clear/group methods)
 &rbrace;;</code></pre>
 
-	<h2>Behavior Notes</h2>
+	<h2 id="behavior-notes">Behavior Notes</h2>
 	<ul>
 		<li><strong>Deduplication:</strong> Multiple simultaneous <code>.fetch()</code> calls share one network request. Subsequent calls await the in-flight promise.</li>
 		<li><strong>Stale-while-revalidate:</strong> When cache is expired, stale data is shown while fetching in background. No loading flash.</li>

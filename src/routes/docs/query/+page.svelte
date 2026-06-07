@@ -21,7 +21,22 @@
 		<strong>Install:</strong> <code>npm install svelte-simple-query</code>
 	</div>
 
-	<h2>Features</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#features">Features</a></li>
+			<li><a href="#quick-start">Quick Start</a></li>
+			<li>
+				<a href="#core-concepts">Core Concepts</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#query-lifecycle">Query Lifecycle</a></li>
+					<li><a href="#state-management">State Management</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<h2 id="features">Features</h2>
 	<div class="row g-3 mb-3">
 		{#each queryFeatures as feature}
 			<div class="col-12 col-sm-6 col-lg-4">
@@ -35,7 +50,7 @@
 		{/each}
 	</div>
 
-	<h2>Quick Start</h2>
+	<h2 id="quick-start">Quick Start</h2>
 	<pre><code>import &lbrace; Query, useQuery &rbrace; from 'svelte-simple-query';
 
 // Global setup
@@ -58,9 +73,9 @@ users.fetch();</code></pre>
   &lbrace;/each&rbrace;
 &lbrace;/if&rbrace;</code></pre>
 
-	<h2>Core Concepts</h2>
+	<h2 id="core-concepts">Core Concepts</h2>
 
-	<h3>Query Lifecycle</h3>
+	<h3 id="query-lifecycle">Query Lifecycle</h3>
 	<ol>
 		<li><strong>fetch()</strong> — checks cache first. If cached &amp; fresh, returns immediately. Otherwise fetches.</li>
 		<li><strong>Stale-while-revalidate</strong> — if cached but expired, shows cached data while fetching in background.</li>
@@ -68,7 +83,7 @@ users.fetch();</code></pre>
 		<li><strong>Error retry</strong> — automatically retries on failure (up to <code>retryCount</code> times).</li>
 	</ol>
 
-	<h3>State Management</h3>
+	<h3 id="state-management">State Management</h3>
 	<table class="table">
 		<thead>
 			<tr><th>State</th><th>Type</th><th>Description</th></tr>

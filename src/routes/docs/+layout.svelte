@@ -164,4 +164,26 @@
 	:global(.docs-content code) {
 		font-size: 0.875em;
 	}
+	:global(.docs-content .toc) {
+		background: #f8f9fa;
+		border: 1px solid #e9ecef;
+		border-radius: 0.5rem;
+		padding: 0.75rem 1rem;
+	}
+	:global(.docs-content .toc a) {
+		color: #0d6efd;
+		text-decoration: none;
+	}
+	:global(.docs-content .toc a:hover) {
+		text-decoration: underline;
+	}
+	:global(.docs-content .toc ul) {
+		font-size: 0.875rem;
+	}
+	:global(.docs-content .toc li + li) {
+		margin-top: 0.15rem;
+	}
+	:global(html) {
+		scroll-behavior: smooth;
+	}
 </style>

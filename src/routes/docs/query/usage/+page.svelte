@@ -2,10 +2,30 @@
 	<h1 class="fw-bold mb-2">Usage Guide</h1>
 	<p class="lead text-muted mb-4">Complete walkthrough for svelte-simple-query.</p>
 
-	<h2>Installation</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#installation">Installation</a></li>
+			<li><a href="#global-setup">Global Setup</a></li>
+			<li>
+				<a href="#usequery">useQuery</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#response-state">Response State</a></li>
+					<li><a href="#refetch">Refetch</a></li>
+				</ul>
+			</li>
+			<li><a href="#cache-management">Cache Management</a></li>
+			<li><a href="#mutations">Mutations</a></li>
+			<li><a href="#dynamic-queries">Dynamic Queries</a></li>
+			<li><a href="#query-groups">Query Groups</a></li>
+			<li><a href="#error-handling-retry">Error Handling &amp; Retry</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="installation">Installation</h2>
 	<pre><code>npm install svelte-simple-query</code></pre>
 
-	<h2>Global Setup</h2>
+	<h2 id="global-setup">Global Setup</h2>
 	<pre><code>import &lbrace; Query &rbrace; from 'svelte-simple-query';
 
 Query.setup(&lbrace;
@@ -23,7 +43,7 @@ Query.setup(&lbrace;
   autoClearExpiredCache: 60000            // Auto-cleanup interval (ms). 0 = disable
 &rbrace;);</code></pre>
 
-	<h2>useQuery</h2>
+	<h2 id="usequery">useQuery</h2>
 	<p>Core hook for fetching data from an endpoint.</p>
 	<pre><code>const posts = useQuery('/posts', &lbrace;
   cacheTimeout: 10000,    // Override global TTL
@@ -32,7 +52,7 @@ Query.setup(&lbrace;
 
 posts.fetch();  // Initiate fetch (deduplicated)</code></pre>
 
-	<h3>Response State</h3>
+	<h3 id="response-state">Response State</h3>
 	<pre><code>&lbrace;#if posts.isLoading&rbrace;
   Loading...
 &lbrace;:else if posts.isError&rbrace;
@@ -48,11 +68,11 @@ posts.fetch();  // Initiate fetch (deduplicated)</code></pre>
   &lbrace;/each&rbrace;
 &lbrace;/if&rbrace;</code></pre>
 
-	<h3>Refetch</h3>
+	<h3 id="refetch">Refetch</h3>
 	<pre><code>await posts.refetch();                       // Skip cache, fetch fresh
 await posts.refetch(&lbrace; disableLoading: true &rbrace;); // Silent background refresh</code></pre>
 
-	<h2>Cache Management</h2>
+	<h2 id="cache-management">Cache Management</h2>
 	<pre><code>Query.cacheTimeout = 5000;   // Change global default
 
 // Per-query override
@@ -64,7 +84,7 @@ Query.clear();                  // Clear ALL cache
 Query.clearExpiredCache();      // Clear only expired entries
 Query.clearGroup('blog');       // Clear all queries in a group</code></pre>
 
-	<h2>Mutations</h2>
+	<h2 id="mutations">Mutations</h2>
 	<pre><code>import &lbrace; mutate &rbrace; from 'svelte-simple-query';
 
 // After a POST/PUT/DELETE, update cache
@@ -82,7 +102,7 @@ await mutate('/users/1', &lbrace;
 // If server call fails, revert:
 await mutate('/users/1', &lbrace; data: prev &rbrace;);</code></pre>
 
-	<h2>Dynamic Queries</h2>
+	<h2 id="dynamic-queries">Dynamic Queries</h2>
 	<p>Use <code>useSingleQuery</code> (alias <code>useDynamicQueries</code>) for parameterized or multiple endpoints.</p>
 	<pre><code>import &lbrace; useSingleQuery &rbrace; from 'svelte-simple-query';
 
@@ -95,7 +115,7 @@ await posts['2'].fetch();
 console.log(posts['1'].data);
 console.log(posts['2'].data);</code></pre>
 
-	<h2>Query Groups</h2>
+	<h2 id="query-groups">Query Groups</h2>
 	<pre><code>const posts = useQuery('/posts', &lbrace; group: 'blog' &rbrace;);
 const authors = useQuery('/authors', &lbrace; groups: ['blog', 'admin'] &rbrace;);
 
@@ -105,7 +125,7 @@ Query.clearGroup('blog');
 // Get all queries in a group
 const blogQueries = Query.group('blog');</code></pre>
 
-	<h2>Error Handling & Retry</h2>
+	<h2 id="error-handling-retry">Error Handling & Retry</h2>
 	<pre><code>Query.setup(&lbrace;
   shouldRetryWhenError: true,
   retryCount: 3,

@@ -2,7 +2,22 @@
 	<h1 class="fw-bold mb-2">Form Examples</h1>
 	<p class="lead text-muted mb-4">Practical code examples for svelte-simple-form.</p>
 
-	<h2>Basic useForm</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#basic-useform">Basic useForm</a></li>
+			<li><a href="#basic-useformcontrol">Basic useFormControl</a></li>
+			<li><a href="#basic-validation">Basic Validation</a></li>
+			<li><a href="#default-values-with-validation">Default Values with Validation</a></li>
+			<li><a href="#nested-fields">Nested Fields</a></li>
+			<li><a href="#array-helpers">Array Helpers</a></li>
+			<li><a href="#cross-field-validation">Cross-Field Validation</a></li>
+			<li><a href="#async-validation">Async Validation</a></li>
+			<li><a href="#file-upload">File Upload</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="basic-useform">Basic useForm</h2>
 	<p>Simplest form setup — <code>useForm</code> with <code>bind:value</code>, submit, and reset.</p>
 
 	<pre><code>import &lbrace; useForm &rbrace; from 'svelte-simple-form';
@@ -23,7 +38,7 @@ const &lbrace; form &rbrace; = useForm(&lbrace;
   &lt;button type="button" onclick=&lbrace;() =&gt; form.reset()&rbrace;&gt;Reset&lt;/button&gt;
 &lt;/form&gt;</code></pre>
 
-	<h2>Basic useFormControl</h2>
+	<h2 id="basic-useformcontrol">Basic useFormControl</h2>
 	<p>Same form using <code>useFormControl</code> with the <code>use:control</code> directive.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
@@ -39,7 +54,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
   &lt;button type="submit"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre>
 
-	<h2>Basic Validation</h2>
+	<h2 id="basic-validation">Basic Validation</h2>
 	<p>Add a Zod schema with <code>standardSchemaValidator</code>. Errors appear based on <code>validateAfter</code> config.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
@@ -66,7 +81,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 
 &lt;button type="submit" disabled=&lbrace;form.isSubmitting || !form.isValid&rbrace;&gt;Submit&lt;/button&gt;</code></pre>
 
-	<h2>Default Values with Validation</h2>
+	<h2 id="default-values-with-validation">Default Values with Validation</h2>
 	<p>Pre-filled form with immediate validation on load.</p>
 
 	<pre><code>const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
@@ -78,7 +93,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 // Trigger validation immediately
 form.validate();</code></pre>
 
-	<h2>Nested Fields</h2>
+	<h2 id="nested-fields">Nested Fields</h2>
 	<p>Deeply nested objects are accessed via dot-path notation.</p>
 
 	<pre><code>const schema = z.object(&lbrace;
@@ -105,7 +120,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 	<pre><code>&lt;input use:control=&lbrace;'address.city'&rbrace; /&gt;
 &lt;input use:control=&lbrace;'nested1.nested2.nested3.label'&rbrace; /&gt;</code></pre>
 
-	<h2>Array Helpers</h2>
+	<h2 id="array-helpers">Array Helpers</h2>
 	<p>Dynamic arrays with add, remove, swap, move, and predicate-based helpers. Auto-reindexes errors/dirty/touched.</p>
 
 	<pre><code>// Add at specific index (default: append)
@@ -132,7 +147,7 @@ form.arrayUpdateBy('users', (u) =&gt; u.id === 5, &lbrace; name: 'Updated' &rbra
   &lt;button onclick=&lbrace;() =&gt; form.arrayRemove('contacts', i)&rbrace;&gt;Remove&lt;/button&gt;
 &lbrace;/each&rbrace;</code></pre>
 
-	<h2>Cross-Field Validation</h2>
+	<h2 id="cross-field-validation">Cross-Field Validation</h2>
 	<p>Use <code>dependencies</code> so changing one field re-validates another — perfect for password confirmation.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
@@ -154,7 +169,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
   &rbrace;)
 &rbrace;);</code></pre>
 
-	<h2>Async Validation</h2>
+	<h2 id="async-validation">Async Validation</h2>
 	<p>Per-field async checks (e.g. username availability) triggered on blur. Also runs on submit.</p>
 
 	<pre><code>const TAKEN = ['admin', 'root', 'test'];
@@ -187,7 +202,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
   &rbrace;
 &rbrace;);</code></pre>
 
-	<h2>File Upload</h2>
+	<h2 id="file-upload">File Upload</h2>
 	<p>Single file, multi-file, and array of objects with files — validated via Zod <code>refine</code>.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';

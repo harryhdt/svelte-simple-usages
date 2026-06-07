@@ -2,10 +2,30 @@
 	<h1 class="fw-bold mb-2">Usage Guide</h1>
 	<p class="lead text-muted mb-4">Complete walkthrough for svelte-simple-form.</p>
 
-	<h2>Installation</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#installation">Installation</a></li>
+			<li><a href="#useform-simple-forms">useForm — Simple Forms</a></li>
+			<li>
+				<a href="#useformcontrol-full-control">useFormControl — Full Control</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#configuration">Configuration</a></li>
+					<li><a href="#usecontrol-directive">use:control Directive</a></li>
+				</ul>
+			</li>
+			<li><a href="#validators">Validators</a></li>
+			<li><a href="#array-helpers">Array Helpers</a></li>
+			<li><a href="#nested-fields">Nested Fields</a></li>
+			<li><a href="#async-validation">Async Validation</a></li>
+			<li><a href="#file-upload">File Upload</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="installation">Installation</h2>
 	<pre><code>npm install svelte-simple-form</code></pre>
 
-	<h2>useForm — Simple Forms</h2>
+	<h2 id="useform-simple-forms">useForm — Simple Forms</h2>
 	<p>Best when you only need submit/reset and prefer direct <code>bind:value</code> bindings.</p>
 	<pre><code>const &lbrace; form &rbrace; = useForm(&lbrace;
   initialValues: &lbrace; email: '', password: '' &rbrace;,
@@ -24,10 +44,10 @@
 		</tbody>
 	</table>
 
-	<h2>useFormControl — Full Control</h2>
+	<h2 id="useformcontrol-full-control">useFormControl — Full Control</h2>
 	<p>Use when you need validation, dirty/touched tracking, <code>use:control</code>, or array helpers.</p>
 
-	<h3>Configuration</h3>
+	<h3 id="configuration">Configuration</h3>
 	<table class="table">
 		<thead>
 			<tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
@@ -43,7 +63,7 @@
 		</tbody>
 	</table>
 
-	<h3>use:control Directive</h3>
+	<h3 id="usecontrol-directive">use:control Directive</h3>
 	<p>Attach to form elements to establish a two-way contract with form state. Handles all input types:</p>
 	<table class="table">
 		<thead>
@@ -84,7 +104,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 
 	<p>For full documentation, source code, and contribution guide, visit <a href="https://github.com/harryhdt/svelte-simple-form-validators" target="_blank">github.com/harryhdt/svelte-simple-form-validators</a>.</p>
 
-	<h2>Array Helpers</h2>
+	<h2 id="array-helpers">Array Helpers</h2>
 	<pre><code>// Add
 form.arrayAdd('users', &lbrace; name: 'New' &rbrace;, 0); // insert at index 0
 form.arrayAdd('tags', 'new tag');            // append to end
@@ -105,12 +125,12 @@ form.arrayRemoveBy('users', (u) =&gt; u.name === 'John');
 form.arrayUpdateBy('users', (u) =&gt; u.id === 5, &lbrace; name: 'Updated' &rbrace;);</code></pre>
 	<p><em>Note:</em> All array helpers auto-reindex errors, dirty, and touched state on sibling items.</p>
 
-	<h2>Nested Fields</h2>
+	<h2 id="nested-fields">Nested Fields</h2>
 	<pre><code>// Data shape: &lbrace; address: &lbrace; city: '', zip: '' &rbrace;, contacts: [&lbrace; name: '' &rbrace;] &rbrace;
 &lt;input use:control=&lbrace;'address.city'&rbrace; /&gt;
 &lt;input use:control=&lbrace;'contacts.0.name'&rbrace; /&gt;</code></pre>
 
-	<h2>Async Validation</h2>
+	<h2 id="async-validation">Async Validation</h2>
 	<p>Use async checks within your schema. The library debounces change-triggered validation to prevent API hammering.</p>
 	<pre><code>import * as v from 'valibot';
 import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
@@ -128,7 +148,7 @@ const schema = v.object(&lbrace;
 &rbrace;);</code></pre>
 	<p>Async checks run on all triggers (change, blur, submit) by default. The debounce (100ms) prevents API hammering on rapid keystrokes — only affects change-triggered validation.</p>
 
-	<h2>File Upload</h2>
+	<h2 id="file-upload">File Upload</h2>
 	<pre><code>import &lbrace; z &rbrace; from 'zod';
 import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
 

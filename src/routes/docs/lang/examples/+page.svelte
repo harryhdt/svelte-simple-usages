@@ -2,7 +2,18 @@
 	<h1 class="fw-bold mb-2">Lang Examples</h1>
 	<p class="lead text-muted mb-4">Practical code examples for svelte-simple-lang.</p>
 
-	<h2>Basic Setup</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#basic-setup">Basic Setup</a></li>
+			<li><a href="#multiple-locales">Multiple Locales</a></li>
+			<li><a href="#parameters-pluralization">Parameters &amp; Pluralization</a></li>
+			<li><a href="#lazy-loading">Lazy Loading</a></li>
+			<li><a href="#lru-cache-queue">LRU Cache Queue</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="basic-setup">Basic Setup</h2>
 	<p>Create a lang instance with a single locale and translate keys.</p>
 
 	<pre><code>import &lbrace; createLang &rbrace; from 'svelte-simple-lang';
@@ -32,7 +43,7 @@ export const &lbrace; t, setLocale, getLocale, availableLocales &rbrace; = lang;
 &lt;p&gt;&lbrace;t('hello_&lbrace;name&rbrace;', &lbrace; name: 'Dunia' &rbrace;)&rbrace;&lt;/p&gt;
 &lt;p&gt;&lbrace;t('nav.home')&rbrace; / &lbrace;t('nav.about')&rbrace;&lt;/p&gt;</code></pre>
 
-	<h2>Multiple Locales</h2>
+	<h2 id="multiple-locales">Multiple Locales</h2>
 	<p>Create an instance with multiple locales and switch between them at runtime.</p>
 
 	<pre><code>import &lbrace; createLang &rbrace; from 'svelte-simple-lang';
@@ -54,7 +65,7 @@ console.log(getLocale()); // 'en'
 await setLocale('id');
 console.log(getLocale()); // 'id'</code></pre>
 
-	<h2>Parameters & Pluralization</h2>
+	<h2 id="parameters-pluralization">Parameters & Pluralization</h2>
 	<p>Keys embed <code>&lbrace;param&rbrace;</code> placeholders. Plural forms use <code>_zero</code> and <code>_plural</code> suffixes when <code>count</code> param is provided.</p>
 
 	<pre><code>// JSON keys
@@ -71,7 +82,7 @@ t('item_&lbrace;count&rbrace;', &lbrace; count: 1 &rbrace;);   // "1 item"      
 t('item_&lbrace;count&rbrace;', &lbrace; count: 5 &rbrace;);   // "5 items"        (_plural)
 t('item_&lbrace;count&rbrace;', &lbrace; count: 100 &rbrace;); // "100 items"      (_plural)</code></pre>
 
-	<h2>Lazy Loading</h2>
+	<h2 id="lazy-loading">Lazy Loading</h2>
 	<p>Load locales asynchronously on first request — keeps initial bundle small.</p>
 
 	<pre><code>const lang = createLang(&lbrace;
@@ -95,7 +106,7 @@ await lang.setLocale('jp'); // triggers fetch
 await lang.setLocale('fr'); // triggers import
 await lang.setLocale('jp'); // cached — instant</code></pre>
 
-	<h2>LRU Cache Queue</h2>
+	<h2 id="lru-cache-queue">LRU Cache Queue</h2>
 	<p>Control how many locales are kept in memory. Default is 5, minimum is 2. The default locale is never evicted.</p>
 
 	<pre><code>const lang = createLang(&lbrace;

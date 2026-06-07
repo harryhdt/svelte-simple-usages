@@ -23,7 +23,17 @@
 		<strong>Install:</strong> <code>npm install svelte-simple-lang</code>
 	</div>
 
-	<h2>Features</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#features">Features</a></li>
+			<li><a href="#live-example">Live Example</a></li>
+			<li><a href="#quick-start">Quick Start</a></li>
+			<li><a href="#language-files">Language Files</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="features">Features</h2>
 	<div class="row g-3 mb-3">
 		{#each langFeatures as feature}
 			<div class="col-12 col-sm-6 col-lg-4">
@@ -37,7 +47,7 @@
 		{/each}
 	</div>
 
-	<h2>Live Example</h2>
+	<h2 id="live-example">Live Example</h2>
 	<p class="text-muted small">Current locale: <strong>{getLocale()}</strong></p>
 	<div class="card mb-4">
 		<div class="card-body py-3">
@@ -53,7 +63,7 @@
 		</div>
 	</div>
 
-	<h2>Quick Start</h2>
+	<h2 id="quick-start">Quick Start</h2>
 	<pre><code>import &lbrace; createLang &rbrace; from 'svelte-simple-lang';
 import id from './id.json';
 
@@ -68,7 +78,7 @@ const i18n = createLang(&lbrace;
 
 export const &lbrace; t, setLocale, getLocale, availableLocales &rbrace; = i18n;</code></pre>
 
-	<h2>Language Files</h2>
+	<h2 id="language-files">Language Files</h2>
 	<p>JSON files define your translations. Keys can be nested or contain <code>&lbrace;param&rbrace;</code> placeholders.</p>
 	<div class="row g-3 mb-3">
 		<div class="col-md-6">

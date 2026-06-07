@@ -2,7 +2,18 @@
 	<h1 class="fw-bold mb-2">Query Examples</h1>
 	<p class="lead text-muted mb-4">Practical code examples for svelte-simple-query.</p>
 
-	<h2>Setup & Basic Fetch</h2>
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#setup-basic-fetch">Setup &amp; Basic Fetch</a></li>
+			<li><a href="#parameters-pagination">Parameters &amp; Pagination</a></li>
+			<li><a href="#mutations">Mutations</a></li>
+			<li><a href="#cache-management">Cache Management</a></li>
+			<li><a href="#dynamic-queries">Dynamic Queries</a></li>
+		</ul>
+	</nav>
+
+	<h2 id="setup-basic-fetch">Setup & Basic Fetch</h2>
 	<p>Configure global <code>Query</code> and fetch data in a component.</p>
 
 	<pre><code>import &lbrace; Query, useQuery &rbrace; from 'svelte-simple-query';
@@ -34,7 +45,7 @@ $effect(() =&gt; &lbrace;
   &lt;button onclick=&lbrace;() =&gt; users.refetch()&rbrace;&gt;Retry&lt;/button&gt;
 &lbrace;/if&rbrace;</code></pre>
 
-	<h2>Parameters & Pagination</h2>
+	<h2 id="parameters-pagination">Parameters & Pagination</h2>
 	<p>Reactively rebuild query when params change. Use <code>$derived</code> + <code>$effect</code> + <code>untrack</code>.</p>
 
 	<pre><code>import &lbrace; untrack &rbrace; from 'svelte';
@@ -72,7 +83,7 @@ $effect(() =&gt; &lbrace;
   &lt;option value=&lbrace;10&rbrace;&gt;10&lt;/option&gt;
 &lt;/select&gt;</code></pre>
 
-	<h2>Mutations</h2>
+	<h2 id="mutations">Mutations</h2>
 	<p>Optimistically update query data after a mutation using <code>mutate()</code>.</p>
 
 	<pre><code>const users = useQuery&lt;User[]&gt;('/users');
@@ -99,7 +110,7 @@ const editUser = async (id: number) =&gt; &lbrace;
   &rbrace;);
 &rbrace;;</code></pre>
 
-	<h2>Cache Management</h2>
+	<h2 id="cache-management">Cache Management</h2>
 	<p>Control cache TTL per-query. Clear expired or all cache entries.</p>
 
 	<pre><code>// Per-query TTL overrides global default
@@ -117,7 +128,7 @@ Query.setup(&lbrace; autoClearExpiredCache: 30000 &rbrace;);  // every 30s
 // Or disable:
 Query.setup(&lbrace; autoClearExpiredCache: 0 &rbrace;);</code></pre>
 
-	<h2>Dynamic Queries</h2>
+	<h2 id="dynamic-queries">Dynamic Queries</h2>
 	<p>Create parameterized queries on-the-fly with <code>useSingleQuery</code>. Useful for prefetch on hover.</p>
 
 	<pre><code>import &lbrace; useSingleQuery &rbrace; from 'svelte-simple-query';

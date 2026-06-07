@@ -17,11 +17,26 @@
 		Reactive form handling built on Svelte 5 Runes — zero dependencies.
 	</p>
 
+	<nav class="toc mb-4">
+		<strong class="d-block mb-1 small text-muted text-uppercase">On this page</strong>
+		<ul class="list-unstyled mb-0">
+			<li><a href="#when-to-use-what">When to Use What</a></li>
+			<li><a href="#features">Features</a></li>
+			<li>
+				<a href="#quick-start">Quick Start</a>
+				<ul class="list-unstyled ps-3">
+					<li><a href="#useform-minimal">useForm — Minimal</a></li>
+					<li><a href="#useformcontrol-full-control">useFormControl — Full Control</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
 	<div class="callout">
 		<strong>Install:</strong> <code>npm install svelte-simple-form</code>
 	</div>
 
-	<h2>When to Use What</h2>
+	<h2 id="when-to-use-what">When to Use What</h2>
 	<table class="table">
 		<thead>
 			<tr><th>Hook</th><th>Best For</th></tr>
@@ -38,7 +53,7 @@
 		</tbody>
 	</table>
 
-	<h2>Features</h2>
+	<h2 id="features">Features</h2>
 	<div class="row g-3 mb-3">
 		{#each features as feature}
 			<div class="col-12 col-sm-6 col-lg-4">
@@ -52,8 +67,8 @@
 		{/each}
 	</div>
 
-	<h2>Quick Start</h2>
-	<h3>useForm — Minimal</h3>
+	<h2 id="quick-start">Quick Start</h2>
+	<h3 id="useform-minimal">useForm — Minimal</h3>
 	<pre><code>import &lbrace; useForm &rbrace; from 'svelte-simple-form';
 
 const &lbrace; form &rbrace; = useForm(&lbrace;
@@ -71,7 +86,7 @@ const &lbrace; form &rbrace; = useForm(&lbrace;
   &lt;/button&gt;
 &lt;/form&gt;</code></pre>
 
-	<h3>useFormControl — Full Control</h3>
+	<h3 id="useformcontrol-full-control">useFormControl — Full Control</h3>
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
 
 const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
