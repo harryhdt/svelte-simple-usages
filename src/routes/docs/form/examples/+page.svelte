@@ -43,7 +43,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 	<p>Add a Zod schema with <code>standardSchemaValidator</code>. Errors appear based on <code>validateAfter</code> config.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
-import &lbrace; standardSchemaValidator &rbrace; from '&lbrace;@&rbrace;svelte-simple-form/validators/standard-schema';
+import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
 import z from 'zod';
 
 const schema = z.object(&lbrace;
@@ -136,7 +136,7 @@ form.arrayUpdateBy('users', (u) =&gt; u.id === 5, &lbrace; name: 'Updated' &rbra
 	<p>Use <code>dependencies</code> so changing one field re-validates another — perfect for password confirmation.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
-import &lbrace; standardSchemaValidator &rbrace; from '&lbrace;@&rbrace;svelte-simple-form/validators/standard-schema';
+import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
 import z from 'zod';
 
 const schema = z.object(&lbrace;
@@ -191,7 +191,7 @@ const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
 	<p>Single file, multi-file, and array of objects with files — validated via Zod <code>refine</code>.</p>
 
 	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
-import &lbrace; standardSchemaValidator &rbrace; from '&lbrace;@&rbrace;svelte-simple-form/validators/standard-schema';
+import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
 import z from 'zod';
 
 const schema = z.object(&lbrace;

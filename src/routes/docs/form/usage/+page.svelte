@@ -59,200 +59,30 @@
 	<p>Supported elements: <code>input[type=text|email|password|number|checkbox|radio|file]</code>, <code>textarea</code>, <code>select</code> (single &amp; multiple), <code>div[contenteditable]</code>.</p>
 
 	<h2 id="validators">Validators</h2>
-	<p>Validators implement the <code>Validator&lt;T&gt;</code> interface. The two methods you need to provide:</p>
+	<p>Validation is handled by the <code>Validator&lt;T&gt;</code> interface. Instead of rolling your own, use the official <strong>svelte-simple-form-validators</strong> package.</p>
 
-	<pre><code>interface Validator&lt;T = any&gt; &lbrace;
-  validateField(
-    field: FlatPaths&lt;T&gt;,
-    form: FormControlContext&lt;T&gt;,
-    force?: boolean,
-    config?: &lbrace;
-      validateOn?: string[];
-      validateAfter?: string;
-      validateDebounce?: number;
-    &rbrace;
-  ): boolean | Promise&lt;boolean&gt;;
+	<div class="callout">
+		<strong>Install:</strong> <code>npm install @svelte-simple-form/validators</code>
+	</div>
 
-  validateForm(form: FormControlContext&lt;T&gt;): boolean | Promise&lt;boolean&gt;;
-&rbrace;</code></pre>
+	<p>Compatible with any Standard Schema library (Zod, Valibot, ArkType, etc.).</p>
 
-	<p>Below are reference implementations you can copy into your project.</p>
+	<pre><code>import &lbrace; useFormControl &rbrace; from 'svelte-simple-form';
+import &lbrace; standardSchemaValidator &rbrace; from '@svelte-simple-form/validators/standard-schema';
+import z from 'zod';
 
-	<h3>Standard Schema Validator</h3>
-	<p>Works with any Standard Schema-compatible library (Zod 4+, Valibot, ArkType).</p>
+const schema = z.object(&lbrace;
+  name: z.string().min(3),
+  email: z.string().email(),
+  age: z.number().min(10)
+&rbrace;);
 
-	<pre><code>// src/lib/validators/standard-schema.ts
-import type &lbrace; FormControlContext &rbrace; from 'svelte-simple-form';
-import type &lbrace; StandardSchemaV1 &rbrace; from '&lbrace;@&rbrace;standard-schema/spec';
-import &lbrace; getDotPath &rbrace; from '&lbrace;@&rbrace;standard-schema/utils';
+const &lbrace; form, control &rbrace; = useFormControl(&lbrace;
+  initialValues: &lbrace; name: '', email: '', age: 0 &rbrace;,
+  validator: standardSchemaValidator(schema)
+&rbrace;);</code></pre>
 
-interface Options &lbrace;
-  dependencies?: Partial&lt;Record&lt;string, string[]&gt;&gt;;
-&rbrace;
-
-export function standardSchemaValidator&lt;TInput, TOutput&gt;(
-  schema: StandardSchemaV1&lt;TInput, TOutput&gt;,
-  options: Options = &lbrace;&rbrace;
-) &lbrace;
-  async function validate(values: any) &lbrace;
-    let result = schema["~standard"].validate(values);
-    if (result instanceof Promise) result = await result;
-    return result;
-  &rbrace;
-
-  function convertIssues(issues: any[]) &lbrace;
-    const errors: Record&lt;string, string[]&gt; = &lbrace;&rbrace;;
-    for (const issue of issues) &lbrace;
-      const path = getDotPath(issue) || "_form";
-      (errors[path] ??= []).push(issue.message);
-    &rbrace;
-    return errors;
-  &rbrace;
-
-  let latestFormCall: symbol;
-  const latestCall: Record&lt;string, symbol&gt; = &lbrace;&rbrace;;
-
-  function getFieldsToCheck(field: string) &lbrace;
-    return [field, ...(options?.dependencies?.[field] ?? [])];
-  &rbrace;
-
-  return &lbrace;
-    async validateForm(f: unknown) &lbrace;
-      const form = f as FormControlContext;
-      const callId = Symbol();
-      latestFormCall = callId;
-      const result = await validate(form.data);
-      if (latestFormCall !== callId) return false;
-      form.setErrors(&lbrace;&rbrace;);
-      if (!result.issues) return true;
-      const errors = convertIssues(result.issues as any);
-      for (const [errKey, msgs] of Object.entries(errors)) &lbrace;
-        form.setError(errKey as any, msgs);
-        if (errKey.includes(".")) &lbrace;
-          const parts = errKey.split(".");
-          while (parts.length &gt; 1) &lbrace;
-            parts.pop();
-            const parentPath = parts.join(".");
-            if (!errors[parentPath]) &lbrace;
-              form.setError(parentPath as any, ["One or more items are invalid"]);
-            &rbrace;
-          &rbrace;
-        &rbrace;
-      &rbrace;
-      return false;
-    &rbrace;,
-
-    async validateField(field, f, force = false, config) &lbrace;
-      const form = f as FormControlContext;
-      const callId = Symbol();
-      latestCall[field] = callId;
-      const result = await validate(form.data);
-      if (latestCall[field] !== callId) return false;
-      const errors = convertIssues((result.issues || []) as any[]);
-      const fieldsToSync = getFieldsToCheck(field);
-      let valid = true;
-      const &lbrace; validateOn, validateAfter, validateDebounce &rbrace; = &lbrace;
-        validateOn: ["change", "blur"],
-        validateAfter: "touched-and-dirty",
-        validateDebounce: 100,
-        ...config,
-      &rbrace;;
-
-      for (const fieldKey of fieldsToSync) &lbrace;
-        for (const k of Object.keys(form.errors)) &lbrace;
-          if (k === fieldKey || k.startsWith(fieldKey + ".")) &lbrace;
-            form.removeError(k);
-          &rbrace;
-        &rbrace;
-        if (fieldKey.includes(".")) &lbrace;
-          const parts = fieldKey.split(".");
-          while (parts.length &gt; 1) &lbrace;
-            parts.pop();
-            const p = parts.join(".");
-            if (form.errors[p]?.[0] === "One or more items are invalid") &lbrace;
-              form.removeError(p);
-            &rbrace;
-          &rbrace;
-        &rbrace;
-        const matching = Object.entries(errors).filter(
-          ([errKey]) =&gt; errKey === fieldKey || errKey.startsWith(fieldKey + ".")
-        );
-        if (matching.length &gt; 0) &lbrace;
-          const isMainField = fieldKey === field;
-          const isTouched = form.touched[fieldKey as any];
-          const isDirty = form.dirty[fieldKey as any];
-          const shouldShowError =
-            (isMainField &amp;&amp; force) ||
-            (validateAfter === "touched" ? isTouched
-              : validateAfter === "dirty" ? isDirty
-              : validateAfter === "touched-or-dirty" ? isTouched || isDirty
-              : isTouched &amp;&amp; isDirty) ||
-            form.isSubmitting;
-          if (shouldShowError) &lbrace;
-            valid = false;
-            for (const [errKey, msgs] of matching) &lbrace;
-              form.setError(errKey, msgs);
-              if (errKey.includes(".")) &lbrace;
-                // ... parent error propagation
-              &rbrace;
-            &rbrace;
-          &rbrace; else &lbrace; valid = false; &rbrace;
-        &rbrace;
-      &rbrace;
-      return valid;
-    &rbrace;,
-  &rbrace;;
-&rbrace;</code></pre>
-
-	<h3>Zod Validator</h3>
-	<pre><code>// src/lib/validators/zod.ts
-import type &lbrace; FormControlContext &rbrace; from 'svelte-simple-form';
-import type &lbrace; ZodType &rbrace; from 'zod';
-
-export function zodValidator&lt;T extends ZodType&lt;any&gt;&gt;(
-  schema: T,
-  options: &lbrace; dependencies?: Partial&lt;Record&lt;string, string[]&gt;&gt; &rbrace; = &lbrace;&rbrace;
-) &lbrace;
-  function mapErrors(values: any) &lbrace;
-    const res = schema.safeParse(values);
-    if (res.success) return &lbrace;&rbrace;;
-    const errors: Record&lt;string, string[]&gt; = &lbrace;&rbrace;;
-    for (const issue of res.error.issues) &lbrace;
-      const key = issue.path.join('.') || '_form';
-      (errors[key] ??= []).push(issue.message);
-    &rbrace;
-    return errors;
-  &rbrace;
-
-  return &lbrace;
-    validateForm(form: FormControlContext) &lbrace;
-      form.setErrors(&lbrace;&rbrace;);
-      const errors = mapErrors(form.data);
-      if (Object.keys(errors).length) &lbrace;
-        form.setErrors(errors);
-        return false;
-      &rbrace;
-      return true;
-    &rbrace;,
-    validateField(field: string, form: FormControlContext) &lbrace;
-      const allErrors = mapErrors(form.data);
-      const deps = options?.dependencies?.[field] ?? [];
-      const fieldsToCheck = [field, ...deps];
-      let valid = true;
-      for (const key of fieldsToCheck) &lbrace;
-        if (!form.touched[key]) continue;
-        const errs = allErrors[key];
-        if (errs &amp;&amp; errs.length &gt; 0) &lbrace;
-          valid = false;
-          form.setError(key, errs);
-        &rbrace; else &lbrace;
-          form.removeError(key);
-        &rbrace;
-      &rbrace;
-      return valid;
-    &rbrace;,
-  &rbrace;;
-&rbrace;</code></pre>
+	<p>For full documentation, source code, and contribution guide, visit <a href="https://github.com/harryhdt/svelte-simple-form-validators" target="_blank">github.com/harryhdt/svelte-simple-form-validators</a>.</p>
 
 	<h2>Array Helpers</h2>
 	<pre><code>// Add
