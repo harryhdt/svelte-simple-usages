@@ -26,5 +26,5 @@ bootstrap.md
 svelte-*.tgz
 src/lib/form*
 src/lib/query*
-src/lib/lang*
+src/lib/lang/lang*
 static/locales*
