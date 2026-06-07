@@ -239,6 +239,20 @@
 				{#if cacheStatus}
 					<div class="alert alert-info mt-2 mb-0 py-2 small">{cacheStatus}</div>
 				{/if}
+
+				<hr class="my-3" />
+
+				<div>
+					<strong>Preview:</strong>
+					<div class="bg-light rounded p-3 mt-1">
+						<p class="mb-1">{cacheDemo.t('hello')}</p>
+						<p class="mb-1">{cacheDemo.t('goodbye')}</p>
+						<p class="mb-1">{cacheDemo.t('hello_{name}', { name: 'User' })}</p>
+						<p class="mb-0">
+							<strong>Nested:</strong> {cacheDemo.t('nav.home')} / {cacheDemo.t('nav.about')} / {cacheDemo.t('nav.contact')}
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
