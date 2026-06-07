@@ -27,3 +27,4 @@ svelte-*.tgz
 src/lib/form*
 src/lib/query*
 src/lib/lang*
+static/locales*
