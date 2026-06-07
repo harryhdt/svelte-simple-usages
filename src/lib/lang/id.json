@@ -1,0 +1,13 @@
+{
+	"hello": "Halo",
+	"goodbye": "Selamat tinggal",
+	"hello_{name}": "Halo {name}",
+	"item_{count}": "{count} item",
+	"item_{count}_zero": "Tidak ada item",
+	"item_{count}_plural": "{count} item",
+	"nav": {
+		"home": "Beranda",
+		"about": "Tentang",
+		"contact": "Kontak"
+	}
+}
