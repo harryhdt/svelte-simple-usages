@@ -22,10 +22,18 @@
 			<a href={resolve('/form/basic')}>Basic</a>
 		</li>
 		<li>
+			<a href={resolve('/form/basic-control')}>Basic Control</a>
+		</li>
+		<li>
+			<a href={resolve('/form/basic-control-error')}>Basic Control Error</a>
+		</li>
+		<li>
 			<a href={resolve('/form/basic-validation')}>Basic Validation</a>
 		</li>
 		<li>
-			<a href={resolve('/form/basic-default-values-with-validation')}>Basic Default Values with Validation</a>
+			<a href={resolve('/form/basic-default-values-with-validation')}
+				>Basic Default Values with Validation</a
+			>
 		</li>
 		<li>
 			<a href={resolve('/form/nested-validation')}>Nested Validation</a>
