@@ -14,7 +14,7 @@
 	const { form, control } = useFormControl({
 		initialValues: {
 			name: 'Poya',
-			email: 'invalid-email'
+			email: 'invalid-email@abc'
 		},
 		validator: standardSchemaValidator(schema),
 		// validateAfter: 'touched-or-dirty',
@@ -23,9 +23,21 @@
 			await new Promise((r) => setTimeout(r, 2000));
 			console.log(values);
 			success = Math.random() > 0.5 ? true : false;
+		},
+		onSubmitErrorValidation: () => {
+			console.log('Something went wrong', $state.snapshot(form.errors));
+			// auto scroll to first form.errors field
+			const firstErrorKey = Object.keys(form.errors)?.[0];
+			if (firstErrorKey) {
+				const elm = document.getElementById(firstErrorKey) as HTMLInputElement;
+				if (elm) {
+					elm.scrollIntoView();
+					// elm.focus();
+				}
+			}
 		}
 	});
-	form.validate();
+	// form.validate();
 </script>
 
 <div class="p-2">
