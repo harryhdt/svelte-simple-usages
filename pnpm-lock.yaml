@@ -19,10 +19,10 @@ importers:
         version: 0.3.0
       '@svelte-simple-form/validators':
         specifier: ^0.0.6
-        version: 0.0.6(svelte-simple-form@0.4.11(svelte@5.56.2(@typescript-eslint/types@8.57.1)))
+        version: 0.0.6(svelte-simple-form@0.4.13(svelte@5.56.2(@typescript-eslint/types@8.57.1)))
       svelte-simple-form:
-        specifier: ^0.4.11
-        version: 0.4.11(svelte@5.56.2(@typescript-eslint/types@8.57.1))
+        specifier: ^0.4.13
+        version: 0.4.13(svelte@5.56.2(@typescript-eslint/types@8.57.1))
       svelte-simple-lang:
         specifier: ^0.0.5
         version: 0.0.5(svelte@5.56.2(@typescript-eslint/types@8.57.1))
@@ -1092,8 +1092,8 @@ packages:
       svelte:
         optional: true
 
-  svelte-simple-form@0.4.11:
-    resolution: {integrity: sha512-e2Jk5HgpOdNLruA2RiL7DGdiZdg7syruHl+BzaS6d7C8gbaXC3UAu8At/CyYAGJKod8MwFxIs9RAAoZg9wgu4Q==}
+  svelte-simple-form@0.4.13:
+    resolution: {integrity: sha512-Z8d6Gw2PmbIbVTvCqQr0aU2LK+5FgUrlNRldDISwjh2S1zbEuSFPjDO7RJOV/dG8/69tg5heEyK6Eg9oip6OpA==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -1476,11 +1476,11 @@ snapshots:
 
   '@standard-schema/utils@0.3.0': {}
 
-  '@svelte-simple-form/validators@0.0.6(svelte-simple-form@0.4.11(svelte@5.56.2(@typescript-eslint/types@8.57.1)))':
+  '@svelte-simple-form/validators@0.0.6(svelte-simple-form@0.4.13(svelte@5.56.2(@typescript-eslint/types@8.57.1)))':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@standard-schema/utils': 0.3.0
-      svelte-simple-form: 0.4.11(svelte@5.56.2(@typescript-eslint/types@8.57.1))
+      svelte-simple-form: 0.4.13(svelte@5.56.2(@typescript-eslint/types@8.57.1))
 
   '@sveltejs/acorn-typescript@1.0.10(acorn@8.15.0)':
     dependencies:
@@ -2123,7 +2123,7 @@ snapshots:
     optionalDependencies:
       svelte: 5.56.2(@typescript-eslint/types@8.57.1)
 
-  svelte-simple-form@0.4.11(svelte@5.56.2(@typescript-eslint/types@8.57.1)):
+  svelte-simple-form@0.4.13(svelte@5.56.2(@typescript-eslint/types@8.57.1)):
     dependencies:
       svelte: 5.56.2(@typescript-eslint/types@8.57.1)
 
